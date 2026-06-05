@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+.env
+
+# SQLite
+*.db
+
+# VSCode
+.vscode/
+
+# Linux
+*.swp
+
+# Build artifacts
+build/
+dist/
+
+# Logs
+*.log
