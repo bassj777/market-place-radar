@@ -1,23 +1,16 @@
 [
-  {
-    "title": "iPhone 13 Pro 128GB",
-    "price": 8500,
-    "location": "CDMX",
-    "url": "https://example.com/iphone13",
-    "category": "electronics"
-  },
-  {
-    "title": "Laptop Lenovo ThinkPad",
-    "price": 6200,
-    "location": "Estado de México",
-    "url": "https://example.com/thinkpad",
-    "category": "computers"
-  },
-  {
-    "title": "Toyota Corolla 2015",
-    "price": 135000,
-    "location": "Puebla",
-    "url": "https://example.com/corolla",
-    "category": "cars"
-  }
+    {
+        "title": "iPhone 13 Pro 128GB",
+        "price": 8500,
+        "location": "Cuauhtemoc Chihuahua",
+        "url": "https://example.com/offer/iphone-13-1780766806.767633",
+        "category": "electronics"
+    },
+    {
+        "title": "MOUSE RX",
+        "price": 75,
+        "location": "Cuauhtemoc Chihuahua",
+        "url": "https://example.com/offer/iphone-13-1780766806.767664",
+        "category": "electronics"
+    }
 ]
