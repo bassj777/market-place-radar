@@ -1,6 +1,8 @@
 from src.loader import load_offers_from_json
-from src.database import create_database, insert_offer, get_all_offers
+from src.database import create_database, insert_offer, get_all_offers, was_notified, mark_as_notified
 from src.scoring import calculate_score, classify_score
+from src.notifier import should_notify, notify_offer
+
 
 
 def main():
@@ -11,6 +13,10 @@ def main():
     for offer in offers:
         offer.score = calculate_score(offer)
         insert_offer(offer)
+
+        if should_notify(offer) and not was_notified(str(offer.url)) :
+            notify_offer(offer)
+            mark_as_notified(str(offer.url))
 
     stored_offers = get_all_offers()
 

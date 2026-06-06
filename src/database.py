@@ -16,7 +16,8 @@ def create_database():
             location TEXT NOT NULL,
             url TEXT UNIQUE NOT NULL,
             category TEXT NOT NULL,
-            score INTEGER DEFAULT 0
+            score INTEGER DEFAULT 0,
+            notified INTEGER DEFAULT 0
         )
     """)
 
@@ -26,6 +27,9 @@ def create_database():
     if "score" not in columns:
         cursor.execute("ALTER TABLE offers ADD COLUMN score INTEGER DEFAULT 0")
 
+    if "notified" not in columns:
+        cursor.execute("ALTER TABLE offers ADD COLUMN notified INTEGER DEFAULT 0")
+    
     conn.commit()
     conn.close()
 
@@ -82,3 +86,35 @@ def get_all_offers():
 
     conn.close()
     return offers
+
+def was_notified(url: str) -> bool:
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT notified FROM offers
+        WHERE url = ?
+    """, (url,))
+
+    result = cursor.fetchone()
+
+    conn.close()
+
+    if result is None:
+        return False
+
+    return result[0] == 1
+
+
+def mark_as_notified(url: str) -> None:
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        UPDATE offers
+        SET notified = 1
+        WHERE url = ?
+    """, (url,))
+
+    conn.commit()
+    conn.close()
